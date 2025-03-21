@@ -1,0 +1,284 @@
+<html></html>
+<head>
+	<title> Predict Heart Disease</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+	<style>
+		
+		* {
+			font-size: 18px;
+			line-height: 1.4;
+		}
+
+		
+		.split {
+			height: 100%;
+			width: 50%;
+			position: fixed;
+			top: 0;
+			overflow-x: hidden;
+			padding-top: 20px;
+			transition: all 0.3s ease-in-out;
+		}
+
+		
+		.left {
+			left: 0;
+			background-color: #0c0c0c;
+		}
+
+		
+		.right {
+			right: 0;
+			background-color: #f9e3ff;
+		}
+
+		
+		.centered {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			text-align: center;
+		}
+
+		
+		.centered img {
+			width: 100%;
+			height: auto;
+			object-fit: cover;
+			border-radius: 20%;
+			transition: transform 0.3s ease;
+		}
+
+		.centered img:hover {
+			transform: scale(1.1);
+		}
+
+		
+		#entry {
+			font-size: 16px;
+			height: 30px;
+			width: 320px;
+			border-radius: 5px;
+			background-color: #f7f7f7;
+			margin-bottom: 10px;
+			padding: 5px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+			border: none;
+			transition: background-color 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		#entry:hover {
+			background-color: #fcfcfc;
+			box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+		}
+
+		
+		#submit, .submit1, .submit2 {
+			font-size: 18px;
+			border-radius: 8px;
+			background-color: #94d6e3;
+			width: 200px;
+			box-sizing: content-box;
+			padding: 10px;
+			transition: background-color 0.3s ease, transform 0.3s ease;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+			border: none;
+		}
+
+		#submit:hover, .submit1:hover, .submit2:hover {
+			background-color: #2d8ea1;
+			transform: translateY(-2px);
+		}
+
+		
+		.home-name {
+			color: white;
+			font-size: 40px;
+			margin-top: 10px;
+			font-family: 'Cinzel', serif;
+			letter-spacing: 1px;
+		}
+
+		.home1 {
+			color: white;
+			font-family: 'Leckerli One', cursive;
+			font-size: 28px;
+		}
+
+		.find-head {
+			color: rgb(233, 13, 76);
+			font-size: 22px;
+			margin-bottom: 20px;
+		}
+
+		
+		.btn-ans {
+			background-color: rgb(219, 246, 65);
+			border-color: rgb(18, 228, 42);
+			color: rgb(33, 11, 234);
+			font-family: 'Impact', sans-serif;
+			padding: 10px 20px;
+			transition: background-color 0.3s ease, transform 0.3s ease;
+		}
+
+		.btn-ans:hover {
+			background-color: rgb(180, 236, 65);
+			transform: scale(1.05);
+		}
+
+		
+		@media only screen and (max-width: 600px) {
+			.split {
+				width: 100%;
+				position: relative;
+			}
+
+			.centered {
+				transform: translate(-50%, -50%);
+			}
+
+			#entry {
+				width: 100%;
+			}
+		}
+
+		.guide {
+			color: rgb(50, 50, 50);
+			font-family: 'Sans Serif Collection', sans-serif;
+			margin-top: 15px;
+			display: block;
+			text-align: center;
+			transition: color 0.3s ease;
+		}
+
+		.guide:hover {
+			color: rgb(0, 122, 204);
+		}
+
+		
+		.btn {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 10px;
+		}
+      
+        .btn-ans {
+            background-color: #5cb85c;
+            color: rgb(12, 12, 10);
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+			
+        }
+		.btn-ans1 {
+            background-color: #5cb85c;
+            color: rgb(12, 35, 245);
+            border: 2px solid red;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+			font-family: 'Impact', sans-serif;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+			width: 150px;
+        }
+
+        .btn-ans:hover {
+            background-color: #4cae4c;
+            transform: translateY(-2px);
+        }
+
+        .btn-ans:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(92, 184, 92, 0.5);
+        }       
+		.btn-ans1:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(92, 184, 92, 0.5);
+        }  
+	</style>
+
+	<script type="text/javascript">
+		function clearForm() {
+			
+			document.querySelector('input[name="age"]').value = '';
+			document.querySelector('input[name="BP"]').value = '';
+			document.querySelector('input[name="CH"]').value = '';
+			document.querySelector('input[name="maxhr"]').value = '';
+			document.querySelector('input[name="STD"]').value = '';
+			document.querySelector('input[name="fluro"]').value = '';
+			document.querySelector('input[name="Th"]').value = '';
+
+			
+			const radios = document.getElementsByName('r1');
+			for (let i = 0; i < radios.length; i++) {
+				radios[i].checked = false;
+			}
+		}
+	</script>
+</head>
+<body>
+	<center>
+		<div class="bg">
+			<center>
+				<div class="split left">
+					<div class="centered">
+						<img class="img" src="https://img.freepik.com/free-photo/human-heart-gray-background-3d-rendering-3d-illustration_1057-32123.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1725926400&semt=ais_hybrid" alt="Heart">
+						<h5 class="home1"> Heart Disease Prediction</h5>
+						<h1 class="home-name">Welcome {{ name }} </h1>
+					</div>
+				</div>
+
+				<div class="split right">
+					<div class="centered">
+						<h3 class="find-head">Fill the form below to check if you have heart disease or not!</h3>
+						<form action="/check" method="POST">
+							<input type="number" name="age" placeholder="Enter Age" required id="entry" value="{{ age }}">
+							<br>
+							<h4>Chest Pain Type:</h4>
+							<input type="radio" name="r1" value="1" id="num" {% if chest_pain == 1 %}checked{% endif %}> 1
+							<input type="radio" name="r1" value="2" id="num" {% if chest_pain == 2 %}checked{% endif %}> 2
+							<input type="radio" name="r1" value="3" id="num" {% if chest_pain == 3 %}checked{% endif %}> 3
+							<input type="radio" name="r1" value="4" id="num" {% if chest_pain == 4 %}checked{% endif %}> 4
+							<br>
+							<input type="number" name="BP" placeholder="Enter BP" required id="entry" value="{{ BP }}">
+							<br>
+							<input type="number" name="CH" placeholder="Enter Cholesterol" required id="entry" value="{{ CH }}">
+							<br>
+							<input type="number" name="maxhr" placeholder="Enter Max Heart Rate" required id="entry" value="{{ maxhr }}">
+							<br>
+							<input type="number" name="STD" placeholder="Enter ST Depression" step="any" required id="entry" value="{{ STD }}">
+							<br>
+							<input type="number" name="fluro" placeholder="Enter No. of Vessels Fluro" step="any" required id="entry" value="{{ fluro }}">
+							<br>
+							<input type="number" name="Th" placeholder="Thallium" required id="entry" value="{{ Th }}">
+							<br>
+							<div class="btn">
+								<input class="submit1" type="submit" value="Check" id="submit">
+								<button class="submit2" type="button" onclick="clearForm()">Refresh</button>
+							</div>
+							<h2>
+								<button class="btn-ans1">{{ msg }}</button>
+							</h2>
+							<input class="btn-ans" type="submit" formaction="/show_graph" value="Show Graph" id="show">
+							
+						</form>
+						<a class="guide" href="https://www.allbusinesstemplates.com/thumbs/c0cc5eed-c17d-4e24-8650-d8069bbbb52e_1.png">Guide to fill the form</a>
+					</div>
+				</div>
+			</center>
+		</div>
+	</center>
+</body>
+</html>
+
+

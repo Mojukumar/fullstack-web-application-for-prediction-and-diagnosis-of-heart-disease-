@@ -1,0 +1,410 @@
+<html>
+
+</html>
+
+<head>
+  <title>Heart Disease Prediction</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <style>
+    * {
+      font-size: 40px;
+    }
+
+    .bg-image {
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    }
+
+    * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+
+    .boxb {
+      border: 1px solid red;
+    }
+
+    .boxr {
+      border: 1px solid green;
+    }
+
+    .fa {
+      color: goldenrod;
+    }
+
+    .fa-heart {
+      color: red;
+    }
+
+    .btn-success {
+      border-radius: 10px;
+    }
+
+    footer {
+      margin-top: 20px;
+      padding-top: 60px;
+      padding-bottom: 20px;
+      background-color: #ffffff;
+    }
+
+    
+    .split {
+      margin-top: 63px;
+      height: 80%;
+      width: 50%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      overflow-x: hidden;
+      padding-top: 20px;
+    }
+
+    
+    .left {
+      left: 0;
+      background-color: #fff36b;
+    }
+
+   
+    .right {
+      right: 0;
+      background-color: #c0ebe6;
+    }
+
+    
+    .centered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    
+    .centered img {
+      width: 400px;
+      border-radius: 5%;
+    }
+
+    .card-text {
+      font-size: 20px;
+    }
+
+    #entry {
+      font-size: 20px;
+      height: 40px;
+      width: 360px;
+      border-radius: 5px;
+      background-color: #f7f7f7;
+    }
+
+    #entry:hover {
+      background-color: #fcfcfc;
+    }
+
+    #submit {
+      border-radius: 8px;
+      background-color: #94d6e3;
+      width: 230px;
+    }
+
+    #submit {
+      font-size: 25px;
+      border-radius: 8px;
+      background-color: #94d6e3;
+      width: 230px;
+    }
+
+    #submit:hover {
+      background-color: #2d8ea1;
+    }
+
+    #submitl {
+      border-radius: 5px;
+      background-color: #f8dbff;
+      font-size: 20px;
+    }
+
+    .nav {
+      width: 100%;
+      height: 30px;
+      color: #f8dbff;
+    }
+
+    #jumb {
+      height: 350px;
+    }
+
+    #num {
+      font-size: 20px;
+    }
+
+    .card {
+      margin-left: 20px;
+    }
+
+    .img {
+      width: 380px;
+      height: 380px;
+    }
+
+    .body {
+      background-color: #fff5f6;
+    }
+
+    .body1 {
+      color: #bff4ed;
+    }
+
+    .home-head {
+      border-color: blue;
+      background-color: #8ae4f6;
+      justify-content: space-between;
+
+    }
+
+    .head {
+      margin-left: 25px;
+    }
+
+    .dev {
+      width: 50%;
+      height: 350px;
+    }
+
+    .para {
+      font-size: 20px;
+      width: 70%;
+      font-family: Courgette;
+    }
+
+    footer {
+      margin-top: 20px;
+      padding-top: 60px;
+      padding-bottom: 20px;
+      background-color: #ffffff;
+      font-size: 20px;
+    }
+
+
+    .float-right {
+      font-size: 20px;
+      height: 30px;
+      text-decoration: underline;
+
+    }
+
+    
+    .home-nav {
+      display: flex;
+      justify-content: space-between;
+      
+      align-items: center;
+      background-color: #2c3e50;
+     
+      padding: 10px;
+    }
+
+    
+    .home-main .navbar-brand {
+      font-size: 24px;
+      color: #ecf0f1;
+      
+      text-decoration: none;
+      
+      font-family: Mongolian Baiti;
+    }
+
+    
+    .logout-form {
+      margin: 0;
+    }
+
+    .home-logout {
+      background-color: #e74c3c;
+     
+      color: white;
+      
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    
+    .home-logout:hover {
+      background-color: #c0392b;
+    }
+
+    .home-name {
+      font-size: 28px;
+      color: #4b6f94;
+      font-weight: bold;
+      margin: 20px 0;
+      text-align: center;
+      background-color: #ecf0f1;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(87, 63, 63, 0.1);
+      font-family: Georgia;
+    }
+
+    .float-left {
+      font-size: 20px;
+      height: 30px;
+
+    }
+
+    .info {
+      font-family: Constantia;
+      color: rgb(23, 155, 237);
+    }
+
+    .end {
+      font-family: Leckerli One;
+      color: rgb(64, 238, 154);
+    }
+
+    .back {
+      font-family: Segoe UI Black;
+    }
+
+    .card {
+      border-radius: 15px;
+     
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    
+    .btn:hover {
+      background-color: #218838;
+      border-color: #1e7e34;
+    }
+
+    
+    footer a:hover {
+      color: #155724;
+      text-decoration: underline;
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <body>
+    <div class="home-head">
+      <nav class="home-nav">
+        <div class="home-main">
+          <a class="navbar-brand" href="#">HEART DISEASE PREDICTION</a>
+        </div>
+        <div class="logout-container">
+          <form class="logout-form" action="/logout" method="POST">
+            <input class="home-logout" type="submit" value="Logout" class="logout-button">
+          </form>
+        </div>
+      </nav>
+    </div>
+  </body>
+
+  <h2 class="home-name">Welcome {{ name }} </h2>
+  <center>
+    <img class="dev" src="https://cambridgeheartclinic.co.uk/wp-content/uploads/2019/06/monitor-gif-1.gif"
+    height="500px">
+    <br><br>
+    <p class="para">Cardiovascular diseases (CVDs) are the leading cause of death globally,
+      claiming around 17.9 million lives each year. They include conditions like coronary heart disease,
+      cerebrovascular disease, and rheumatic heart disease. Over 80% of CVD deaths are caused by heart attacks and
+      strokes,
+      with a third occurring prematurely in individuals under 70. Key risk factors include unhealthy diet, physical
+      inactivity,
+      tobacco use, and harmful alcohol consumption, which can lead to raised blood pressure, blood glucose, blood
+      lipids,
+      and obesity. These intermediate risk factors increase the likelihood of heart attack, stroke,
+      and heart failure but can be measured and managed in primary healthcare settings. </p>
+    <br>
+  </center>
+
+  <div class="container">
+    <div class="row">
+      
+      <div class="card mt-4 mr-3"
+        style="width: 35rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s; border: 2px solid #28a745;">
+        <img class="card-img-top" src="https://i.pinimg.com/564x/52/72/74/5272749836d772a96f7460e98c05efcc.jpg"
+          class="card-img-top border-bottom:2px solid #28a745;" alt="Card image cap" height="300px">
+        <div class="card-body">
+          <h5 class="card-title" style="color: #ff4d4d;">Know more about Heart Diseases</h5>
+          <p class="info card-text">Studies have proven that there's a higher risk of death in elderly people caused by
+            heart diseases.</p>
+          <a href="https://www.who.int/health-topics/cardiovascular-diseases#tab=tab_1"
+            class="btn btn-success btn-block" style="background-color: #28a745; border-color: #28a745;">Continue
+            Reading</a>
+        </div>
+      </div>
+
+     
+      <div class="card mt-4 mr-3"
+        style="width: 35rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s; border: 2px solid #28a745;">
+        <img class="card-img-top" src="https://i.pinimg.com/564x/29/48/d7/2948d79f2576df67097f143b233b7dd5.jpg"
+          class="card-img-top" alt="Card image cap" height="300px">
+        <div class="card-body">
+          <h5 class="card-title" style="color: #ff4d4d;">Test if you have Heart Disease</h5>
+          <p class="info card-text">87% Accurate!!</p>
+          <br>
+          <a href="{{ url_for('find') }}" class="btn btn-success btn-block"
+            style="background-color: #28a745; border-color: #28a745;">Check Now</a>
+        </div>
+      </div>
+
+      
+      <div class="card mt-4 mr-3"
+        style="width: 35rem; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s; border: 2px solid #28a745;">
+        <img class="card-img-top" src="https://i.pinimg.com/564x/18/ce/3d/18ce3d6ef27dd4dd1f5d6b9b813802cd.jpg"
+          class="card-img-top" alt="Card image cap" height="300px">
+        <div class="card-body">
+          <h5 class="card-title" style="color: #ff4d4d;">Know how to prevent Heart Diseases</h5>
+          <p class="info card-text">Scientists discovered that this habit can help avoid heart diseases............</p>
+          <a href="https://medlineplus.gov/howtopreventheartdisease.html" class="btn btn-success btn-block"
+            style="background-color: #28a745; border-color: #28a745;">Continue Reading</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br><br>
+
+  <footer class="text-muted" style="background-color: #f8f9fa; padding: 20px;">
+    <div class="container">
+      <p class="end float-left" style="color: #333;">You've Reached the end of the webpage</p>
+      <p class="float-right">
+        <a class="back" href="#" style="text-decoration: none;">Back to top</a>
+      </p>
+    </div>
+  </footer>
+</body>
+
+</html>
