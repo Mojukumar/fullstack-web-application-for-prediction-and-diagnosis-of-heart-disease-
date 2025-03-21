@@ -1,1 +1,1 @@
-# fullstack-web-application-for-prediction-and-diagnosis-of-heart-disease-
+# fullstack-web-application-for-prediction-and-diagnosis-of-heart-disease
