@@ -43,14 +43,15 @@ Frontend: HTML, CSS, Bootstrap
 Backend: Flask, Python
 Database: SQLite / MongoDB
 Machine Learning: Scikit-learn (Random Forest Classifier)
+
+
 🤝 Contributing
 Fork the repository
 Create a new branch (git checkout -b feature-branch)
 Commit your changes (git commit -m "Add new feature")
 Push to GitHub (git push origin feature-branch)
 Create a Pull Request
-📜 License
-This project is licensed under the MIT License.
+
 
 📬 Contact
 For queries, reach out to Mojukumar B L at:
